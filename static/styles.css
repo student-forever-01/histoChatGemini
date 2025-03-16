@@ -4,6 +4,7 @@
     padding: 10px;
     border-radius: 10px;
     max-width: 80%;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .user-message {
@@ -22,4 +23,20 @@
 .chat-message p {
     margin: 0;
     line-height: 1.5;
+}
+
+/* Animación para los mensajes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejorar la responsividad */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+    .chat-message {
+        max-width: 90%;
+    }
 }

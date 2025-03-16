@@ -4,7 +4,7 @@ from dotenv import load_dotenv  # Importar la función para cargar variables de 
 import os  # Para acceder a las variables de entorno
 
 # Cargar variables de entorno desde .env
-load_dotenv()
+load_dotenv(".env")
 
 app = Flask(__name__)
 
@@ -45,7 +45,7 @@ def ask():
 
     try:
         # Configurar el prompt para que Gemini responda como el personaje
-        prompt = f"Responde la siguiente pregunta como si fueras {personaje}: {pregunta}"
+        prompt = f"Responde la siguiente pregunta como si fueras {personaje}: {pregunta}, prefiero no tan largas y concretas. No uses *, usa espacios."
         client = genai.GenerativeModel("gemini-2.0-flash")
         response = client.generate_content(prompt)
         return jsonify({"respuesta": f"{response.text}"})
