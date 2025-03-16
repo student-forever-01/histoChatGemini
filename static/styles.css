@@ -1,42 +1,176 @@
-/* Estilos para los mensajes del chat */
+/* Variables para colores */
+:root {
+    --primary-color: #6C63FF; /* Morado moderno */
+    --user-text-color: white;
+    --bot-bg-color: #F5F5F5;
+    --bot-text-color: #2E2E2E;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --hover-color: #5A52E0; /* Color al pasar el mouse */
+    --border-color: #ddd; /* Color para bordes */
+}
+
+/* Contenedor de mensajes para organizar alineación */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Asegura que el bot esté a la izquierda por defecto */
+}
+
+/* Estilos generales de los mensajes */
 .chat-message {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 80%;
-    animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 1rem;
+    word-wrap: break-word;
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+    clear: both; /* Evita problemas de alineación */
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeIn 0.5s ease-out forwards;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease-in-out;
 }
 
+/* Suavizar efecto hover */
+.chat-message:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+/* Mensaje del usuario */
 .user-message {
-    background-color: #007bff;
-    color: white;
-    margin-left: auto; /* Alinear a la derecha */
+    background-color: var(--primary-color);
+    color: var(--user-text-color);
+    align-self: flex-end; /* Alinear a la derecha */
+    text-align: right;
 }
 
+/* Efecto hover para mensajes del usuario */
+.user-message:hover {
+    background-color: var(--hover-color);
+}
+
+/* Mensaje del bot */
 .bot-message {
-    background-color: #f1f1f1;
-    color: #333;
-    margin-right: auto; /* Alinear a la izquierda */
+    background-color: var(--bot-bg-color);
+    color: var(--bot-text-color);
+    align-self: flex-start; /* Alinear a la izquierda */
+    text-align: left;
 }
 
-/* Estilos para los párrafos dentro de los mensajes */
+/* Efecto hover para mensajes del bot */
+.bot-message:hover {
+    background-color: #E8E8E8;
+}
+
+/* Estilos para el texto dentro de los mensajes */
 .chat-message p {
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* Animación para los mensajes */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mejorar la responsividad */
+/* Estilos para el card-header */
+.card-header {
+    background-color: var(--primary-color);
+    color: var(--user-text-color);
+    border-radius: 12px 12px 0 0;
+    padding: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilos para el card-body */
+.card-body {
+    background-color: white;
+    border-radius: 0 0 12px 12px;
+    padding: 20px;
+}
+
+/* Estilos para los inputs y selects */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.2);
+    outline: none;
+}
+
+/* Estilos para el botón de enviar */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Suavizar efecto hover del botón */
+.btn-primary:hover {
+    background-color: var(--hover-color);
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+/* Estilos para el mensaje de error */
+.text-danger {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+/* Estilos para el contenedor del chat */
+#chat-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mejor responsividad */
 @media (max-width: 768px) {
-    .card {
-        margin: 10px;
-    }
     .chat-message {
         max-width: 90%;
+        font-size: 0.95rem;
+        padding: 10px 14px;
+    }
+
+    .card-header {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    .form-control, .form-select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
     }
 }
