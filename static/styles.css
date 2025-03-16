@@ -1,0 +1,25 @@
+/* Estilos para los mensajes del chat */
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto; /* Alinear a la derecha */
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: #333;
+    margin-right: auto; /* Alinear a la izquierda */
+}
+
+/* Estilos para los párrafos dentro de los mensajes */
+.chat-message p {
+    margin: 0;
+    line-height: 1.5;
+}
